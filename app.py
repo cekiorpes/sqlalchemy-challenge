@@ -37,5 +37,43 @@ def home():
         f"/api/v1.0/<start>/<end><br/>"
     )
 
+@app.route("/api/v1.0/precipitation")
+def precipitation():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of date and precipitation data"""
+    # Query date and precipitation
+    results = session.query(Measurement.date, Measurement.prcp).all()
+
+    session.close()
+    print(results)
+
+    # Create a dictionary from the row data and append to a list
+    precipitation = []
+    for date, prcp in results:
+        precipitation_dict = {}
+        precipitation_dict["date"] = date
+        precipitation_dict["prcp"] = prcp
+        precipitation.append(precipitation_dict)
+
+    return jsonify(precipitation)
+
+@app.route("/api/v1.0/stations")
+def stations():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of all stations"""
+    # Query stations
+    results = session.query(Station.station).all()
+
+    session.close()
+
+    # Convert list of tuples into normal list
+    all_stations = list(np.ravel(results))
+
+    return jsonify(all_stations)
+
 if __name__ == '__main__':
     app.run(debug=True)
