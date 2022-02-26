@@ -57,8 +57,7 @@ def precipitation():
     precipitation = []
     for date, prcp in results:
         precipitation_dict = {}
-        precipitation_dict["Date"] = date
-        precipitation_dict["Precipitation"] = prcp
+        precipitation_dict[date] = prcp
         precipitation.append(precipitation_dict)
 
     return jsonify(precipitation)
@@ -124,7 +123,7 @@ def startdate(start_date):
     #Close session
     session.close()
 
-    # Create a dictionary from the data and append to a list
+        # Create a dictionary from the data and append to a list
     temp_calc = []
     for max, min, avg in results:
         temp_calc_dict = {}
@@ -134,6 +133,7 @@ def startdate(start_date):
         temp_calc.append(temp_calc_dict)
 
     return jsonify(temp_calc)
+
 
 #Start and end dates
 @app.route("/api/v1.0/<start_date>/<end_date>")
@@ -160,6 +160,7 @@ def start_end(start_date, end_date):
         temp_calc.append(temp_calc_dict)
 
     return jsonify(temp_calc)
+
 
 
 if __name__ == '__main__':
