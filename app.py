@@ -87,8 +87,8 @@ def tobs():
     session = Session(engine)
 
     """Return a list of dates and tobs for the most active station for the last year of data"""
-    most_active_station = 'USC00519281' #do query again?
-    most_recent_year = '2016-08-23'     #do query/datetime calc again?
+    most_active_station = 'USC00519281' 
+    most_recent_year = '2016-08-23'    
 
     #Query
     results = session.query(Measurement.date, Measurement.tobs).\
