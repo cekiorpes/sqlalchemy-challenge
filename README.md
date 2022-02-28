@@ -22,6 +22,6 @@ In part 2, the data was used to calculate and plot minimum, avg, and max tempera
 
 ![Trip Avg Temp](Resources/TripAvg.png)
 
-Daily normals for temperature were also calculated and plotted in an area plot. 
+Daily temperature normals for this date period were also calculated and plotted in an area plot. 
 
 ![Daily Normals](Resources/DailyNormals.png)
