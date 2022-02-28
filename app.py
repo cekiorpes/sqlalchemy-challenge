@@ -115,7 +115,6 @@ def startdate(start_date):
     session = Session(engine)
 
     """Return a list of the minimum temperature, the average temperature, and the max temperature for a given start date"""
-    #startdate = request.args.get("startdate"), default = dt.date(2016, 6, 1).isoformat()
     #Query
     results = session.query(func.max(Measurement.tobs), func.min(Measurement.tobs), func.avg(Measurement.tobs)).\
         filter(Measurement.date >= start_date).all()
